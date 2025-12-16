@@ -1,136 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lenguaje de Marcas - Inicio</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/animations.css">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title data-i18n="meta.title">Portafolio de Estudios</title>
+	<link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <div class="page-loader">
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <p>Cargando...</p>
-        </div>
-    </div>
+	<header class="encabezado-sitio" role="banner">
+		<div class="contenedor interior-encabezado">
+			<div class="marca">
+				<h1 class="titulo-sitio"><code data-i18n="header.name">&lt;Elvin /&gt;</code></h1>
+				<p class="subtitulo-sitio" data-i18n="header.course">Lenguajes de marcas — M09</p>
+				<p class="meta-sitio" data-i18n="header.instructor">DAM01 — Profesora: Alicia Vázquez</p>
+			</div>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-icon">&#60;LM/&#62;</span>
-                <span class="logo-text">Lenguaje de Marcas</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">Inicio</a></li>
-                <li><a href="pages/apuntes.html" class="nav-link">Apuntes</a></li>
-                <li><a href="pages/deberes.html" class="nav-link">Deberes</a></li>
-            </ul>
-            <button class="menu-toggle" aria-label="Menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+			<nav class="controles-sitio" aria-label="Controles de la página">
+				<button id="themeToggle" class="boton-control" aria-pressed="false" title="Cambiar tema" data-i18n="controls.theme">Tema</button>
+				<button id="langToggle" class="boton-control" aria-pressed="false" title="Cambiar idioma">ES</button>
+			</nav>
+		</div>
+	</header>
 
-    <main class="main-content">
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">Bienvenido a Lenguaje de Marcas</h1>
-                <p class="hero-subtitle">Tu espacio para organizar apuntes y deberes de la asignatura</p>
-                <div class="hero-buttons">
-                    <a href="pages/apuntes.html" class="btn btn-primary">Ver Apuntes</a>
-                    <a href="pages/deberes.html" class="btn btn-secondary">Ver Deberes</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-card card-1">
-                    <span class="card-icon">&#60;XML/&#62;</span>
-                </div>
-                <div class="floating-card card-2">
-                    <span class="card-icon">{ JSON }</span>
-                </div>
-                <div class="floating-card card-3">
-                    <span class="card-icon">YAML</span>
-                </div>
-            </div>
-        </section>
+	<main class="contenedor" role="main">
+		<section class="introduccion" aria-labelledby="intro-title">
+			<h2 id="intro-title" data-i18n="intro.title">Organizador de prácticas</h2>
+			<p data-i18n="intro.description">Plantilla para organizar por temas todos los trabajos realizados en la asignatura. Usa las tarjetas para añadir ejercicios, ejemplos y enlaces a repositorios.</p>
+		</section>
 
-        <section class="features">
-            <div class="container">
-                <h2 class="section-title">Organiza tu aprendizaje</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📚</div>
-                        <h3>Apuntes Organizados</h3>
-                        <p>Todos tus apuntes de la asignatura en un solo lugar, bien estructurados y fáciles de consultar.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">✅</div>
-                        <h3>Gestión de Deberes</h3>
-                        <p>Organiza tus tareas por categorías: DTD, JavaScript, XML, JSON, YAML y más.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Acceso Rápido</h3>
-                        <p>Encuentra lo que necesitas al instante con nuestra interfaz intuitiva y moderna.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+		<section class="modulos" aria-labelledby="modules-title">
+			<h2 id="modules-title" data-i18n="modules.title">Módulos y temas</h2>
 
-        <section class="categories-preview">
-            <div class="container">
-                <h2 class="section-title">Categorías Disponibles</h2>
-                <div class="categories-grid">
-                    <div class="category-card">
-                        <div class="category-icon">&#60;!DOCTYPE&#62;</div>
-                        <h3>DTD</h3>
-                        <p>Document Type Definition</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">JS</div>
-                        <h3>JavaScript</h3>
-                        <p>Lenguaje de programación</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">&#60;/&#62;</div>
-                        <h3>XML</h3>
-                        <p>Extensible Markup Language</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">{ }</div>
-                        <h3>JSON</h3>
-                        <p>JavaScript Object Notation</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">---</div>
-                        <h3>YAML</h3>
-                        <p>YAML Ain't Markup Language</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">✓</div>
-                        <h3>JSON Schema</h3>
-                        <p>Validación de JSON</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">✓</div>
-                        <h3>Algo MAs</h3>
-                        <p>Juegos</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+			<div class="rejilla" role="list">
+				<article class="tarjeta" role="listitem" data-topic="javascript">
+					<span class="distintivo" data-i18n="module.js.badge">M09</span>
+					<h3 class="titulo-tarjeta" data-i18n="module.js.title">JavaScript</h3>
+					<p class="subtitulo-tarjeta" data-i18n="module.js.sub">Interactividad y DOM</p>
+					<p data-i18n="module.js.desc">Ejercicios que incluyen manipulación del DOM, fetch/async, módulos ES y prácticas de M09.</p>
+					<ul class="enlaces">
+						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
+						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>
+					</ul>
+				</article>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Lenguaje de Marcas. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+				<article class="tarjeta" role="listitem" data-topic="html">
+					<span class="distintivo" data-i18n="module.html.badge">M04</span>
+					<h3 class="titulo-tarjeta" data-i18n="module.html.title">HTML / Lenguaje de marcas</h3>
+					<p class="subtitulo-tarjeta" data-i18n="module.html.sub">Estructura semántica y accesibilidad</p>
+					<p data-i18n="module.html.desc">Trabajos sobre semántica, accesibilidad, DTD y validación de documentos.</p>
+					<ul class="enlaces">
+						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
+						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>
+					</ul>
+				</article>
 
-    <script src="js/main.js"></script>
-    <script src="js/transitions.js"></script>
+				<article class="tarjeta" role="listitem" data-topic="css">
+					<span class="distintivo" data-i18n="module.css.badge">M09</span>
+					<h3 class="titulo-tarjeta" data-i18n="module.css.title">CSS Moderno</h3>
+					<p class="subtitulo-tarjeta" data-i18n="module.css.sub">Layouts, variables y animaciones</p>
+					<p data-i18n="module.css.desc">Plantillas, metodología BEM-like, variables y diseños responsivos para proyectos.</p>
+					<ul class="enlaces">
+						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
+						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>
+					</ul>
+				</article>
+
+				<article class="tarjeta" role="listitem" data-topic="data">
+					<span class="distintivo" data-i18n="module.data.badge">M09</span>
+					<h3 class="titulo-tarjeta" data-i18n="module.data.title">JSON / DTD</h3>
+					<p class="subtitulo-tarjeta" data-i18n="module.data.sub">Intercambio de datos y definiciones</p>
+					<p data-i18n="module.data.desc">Ejemplos de JSON para APIS, validación y pequeños ejercicios con DTD/XML.</p>
+					<ul class="enlaces">
+						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
+						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>
+					</ul>
+				</article>
+			</div>
+		</section>
+	</main>
+
+	<footer class="pie-sitio" role="contentinfo">
+		<div class="contenedor interior-pie">
+			<p class="autor" data-i18n="footer.author">Código realizado por Elvin</p>
+			<p class="contacto">✉️ <a href="mailto:elvin.portillo.7e7@itb.cat">elvin.portillo.7e7@itb.cat</a> · CC: <span data-i18n="footer.cc">Profesor/a</span></p>
+		</div>
+	</footer>
+
+	<script type="module" src="js/script.js"></script>
 </body>
 </html>

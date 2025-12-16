@@ -1,47 +1,47 @@
-/* Paleta y variables globales (comentarios en español) */
+/* Variables y paleta (comentarios en español) */
 :root{
 	--bg: #ffffff;
 	--surface: #ffffff;
 	--page-padding: 2rem;
-	--text: #0b2545;            /* azul oscuro para texto */
+	--texto: #0b2545;            /* azul oscuro para texto */
 	--muted: #5b6b86;
-	--primary: #0b6efd;         /* azul primario */
-	--accent: #ff7a18;          /* naranja para resaltar */
-	--card-bg: #f8fbff;
-	--radius: 12px;
+	--primario: #0b6efd;         /* azul primario */
+	--acento: #ff7a18;          /* naranja para resaltar */
+	--fondo-tarjeta: #f8fbff;
+	--radio: 12px;
 	--gap: 1.25rem;
-	--transition: 180ms ease-out;
-	--shadow: 0 6px 18px rgba(11,38,69,0.08);
+	--trans: 180ms ease-out;
+	--sombra: 0 6px 18px rgba(11,38,69,0.08);
 
-	--heading-font: "Fira Code", "Roboto Mono", ui-monospace, SFMono-Regular, monospace;
-	--body-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--fuente-encabezado: "Fira Code", "Roboto Mono", ui-monospace, SFMono-Regular, monospace;
+	--fuente-cuerpo: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
-	/* variable para glow (uso semántico) */
-	--glow-color: rgba(11,110,253,0.14);
+	--glow: rgba(11,110,253,0.14);
+	color-scheme: light;
 }
 
-/* Tema oscuro */
+/* Modo oscuro */
 :root[data-theme="dark"]{
 	--bg: #0b1220;
 	--surface: #0f1724;
-	--text: #e6eef6;
+	--texto: #e6eef6;
 	--muted: #98a0b3;
-	--primary: #61dafb;
-	--accent: #ffb86b;
-	--card-bg: rgba(255,255,255,0.02);
-	--shadow: 0 10px 30px rgba(2,6,23,0.6);
+	--primario: #61dafb;
+	--acento: #ffb86b;
+	--fondo-tarjeta: rgba(255,255,255,0.02);
+	--sombra: 0 10px 30px rgba(2,6,23,0.6);
 	color-scheme: dark;
 }
 
-/* Reset y base */
+/* Reset básico */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
 	margin:0;
 	min-height:100%;
 	background:linear-gradient(180deg,var(--bg),var(--bg));
-	font-family:var(--body-font);
-	color:var(--text);
+	font-family:var(--fuente-cuerpo);
+	color:var(--texto);
 	padding:var(--page-padding);
 	display:flex;
 	flex-direction:column;
@@ -51,41 +51,65 @@ body{
 }
 
 /* Contenedor central reutilizable */
-.contenedor{
-	width:min(1100px,100%);
-}
+.contenedor{ width:min(1100px,100%); }
 
-/* Encabezado (full-bleed) */
+/* Encabezado full-bleed con caja interior redondeada */
 .encabezado-sitio{
-	/* header de ancho completo */
+	/* ocupa todo el ancho del viewport */
 	width:100%;
 	margin-left: calc(50% - 50vw);
 	margin-right: calc(50% - 50vw);
-	padding: 1rem 2rem;
-	/* sin bordes redondeados para full-bleed */
-	border-radius: 0;
-	background: linear-gradient(180deg, rgba(11,110,253,0.03), transparent);
-	box-shadow: var(--shadow);
+	padding: 1.25rem 0; /* padding vertical para respirar */
+	position:relative;
+	background: transparent; /* fondo lo gestiona la caja interior y la capa decorativa */
 }
 
-/* Interior del encabezado: centrado y flexible */
-.interior-encabezado{
-	/* contenido centrado con max-width */
-	display:flex;
-	align-items:center;
-	justify-content:space-between;
-	gap:1rem;
-	width:100%;
+/* caja interior centrada y redondeada (visible) */
+.encabezado-caja{
 	max-width:1100px;
 	margin:0 auto;
-	flex-wrap:wrap;
+	padding:1rem 1.25rem;
+	border-radius:16px; /* bordes redondeados solicitados */
+	background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+	backdrop-filter: blur(8px) saturate(120%); /* efecto cristal */
+	border: 1px solid rgba(255,255,255,0.04);
+	box-shadow: 0 14px 40px rgba(2,6,23,0.12);
+	position:relative;
+	z-index:2; /* por encima del fondo decorativo */
+}
+
+/* la capa decorativa sigue ocupando todo el header pero queda detrás */
+.encabezado-fondo{
+	position:absolute;
+	inset:0;
+	z-index:0;
+	pointer-events:none;
+	/* degradados y puntos de color suaves */
+	background-image:
+		radial-gradient(circle at 8% 25%, rgba(97,218,251,0.10), transparent 6%),
+		radial-gradient(circle at 88% 75%, rgba(255,121,198,0.06), transparent 10%),
+		linear-gradient(180deg, rgba(11,110,253,0.02), transparent 50%);
+	opacity:0.9;
+	filter: blur(8px) saturate(110%);
+	border-radius: 18px; /* matchea el radio visualmente aunque el elemento ocupa todo el ancho */
+	/* para que la decoración no sobresalga visualmente en móviles */
+}
+
+/* interior-encabezado permanece igual pero garantizo stacking */
+.interior-encabezado{ position:relative; z-index:3; }
+
+/* pequeño ajuste visual para contenedores en móvil */
+@media (max-width:680px){
+	.encabezado-caja{ padding:0.85rem 0.9rem; border-radius:12px; }
+	.encabezado-sitio{ padding:0.9rem 0; }
+	.marca .marca-content{ gap:0.08rem; }
 }
 
 /* Marca y textos */
 .marca .titulo-sitio code{
-	font-family:var(--heading-font);
+	font-family:var(--fuente-encabezado);
 	font-size:1.25rem;
-	color:var(--primary);
+	color:var(--primario);
 	background:transparent;
 	padding:0.15rem 0.45rem;
 	border-radius:6px;
@@ -108,236 +132,124 @@ body{
 	border-radius:8px;
 	cursor:pointer;
 	font-weight:600;
-	color:var(--text);
-	transition:all var(--transition);
+	color:var(--texto);
+	transition:all var(--trans);
 	min-width:64px;
 }
-.boton-control:hover{transform:translateY(-2px); box-shadow:0 6px 18px rgba(11,38,69,0.06)}
+.boton-control:hover{ transform:translateY(-2px); box-shadow:0 6px 18px rgba(11,38,69,0.06); }
 
 /* Introducción */
-.introduccion{margin-bottom:1rem}
-.introduccion p{color:var(--muted)}
+.introduccion{ margin-bottom:1rem; }
+.introduccion p{ color:var(--muted); }
 
 /* Rejilla / Tarjetas */
 .rejilla{
 	display:grid;
 	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 	gap:1rem;
+	perspective: 1100px; /* permite efecto 3D en las tarjetas */
 }
 .tarjeta{
-	background:var(--card-bg);
+	background:var(--fondo-tarjeta);
 	border-radius:10px;
 	padding:1rem;
 	border:1px solid rgba(11,38,69,0.04);
-	transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-	/* preparar para GPU */
+	transition: transform 260ms cubic-bezier(.2,.9,.2,1), box-shadow 260ms linear, border-color 260ms linear;
+	transform-style: preserve-3d; /* mantener hijos en 3D */
+	backface-visibility: hidden;
 	will-change: transform, box-shadow, opacity;
 }
 .tarjeta:hover,
-.tarjeta:focus-within {
-	/* activa pulso como animación corta (once) y sombra más pronunciada */
-	animation: pulseGlow 900ms ease-in-out 1;
+.tarjeta:focus-within{
 	border-color: rgba(11,110,253,0.16);
+	box-shadow: 0 18px 42px rgba(11,110,253,0.10);
+	transform: translateY(-12px) rotateX(-6deg) rotateY(6deg);
 }
-.tarjeta[data-topic="javascript"]:not(:hover) {
-	animation: float 6000ms ease-in-out infinite;
-	animation-delay: 600ms;
-	animation-play-state: paused; /* pausa por defecto, JS/CSS puede activarlo si se desea */
-}
-.tarjeta:hover[data-topic="javascript"]{ animation-play-state: running; }
 .distintivo{
 	display:inline-block;
-	background:var(--primary);
+	background:var(--primario);
 	color:white;
 	font-weight:700;
 	padding:0.2rem 0.5rem;
 	border-radius:999px;
 	font-size:0.75rem;
+	transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 220ms;
+	transform: translateZ(0);
+	transform-origin: center;
+	will-change: transform;
 }
-.titulo-tarjeta{font-family:var(--heading-font); color:var(--text); margin:0.5rem 0 0.25rem 0}
-.subtitulo-tarjeta{margin:0;color:var(--muted);font-weight:600}
-.tarjeta p{color:var(--muted);margin-top:0.5rem}
+.titulo-tarjeta{ font-family:var(--fuente-encabezado); color:var(--texto); margin:0.5rem 0 0.25rem 0; }
+.subtitulo-tarjeta{ margin:0; color:var(--muted); font-weight:600; }
+.tarjeta p{ color:var(--muted); margin-top:0.5rem; }
 
 /* Lista de enlaces dentro de la tarjeta */
-.enlaces{margin-top:0.75rem;padding-left:1rem}
-.enlaces li{margin-bottom:0.35rem}
-.enlaces a{color:var(--primary); text-decoration:none; font-weight:600}
-.enlaces a:hover{text-decoration:underline; color:var(--accent)}
+.enlaces{ margin-top:0.75rem; padding-left:1rem; }
+.enlaces li{ margin-bottom:0.35rem; }
+.enlaces a{ color:var(--primario); text-decoration:none; font-weight:600; position:relative; display:inline-block; padding-bottom:2px; }
+.enlaces a::after{ content:''; position:absolute; left:0; bottom:0; height:2px; width:100%; background:var(--acento); transform: scaleX(0); transform-origin:left; transition: transform 240ms ease-out; }
+.enlaces a:hover::after, .enlaces a:focus::after{ transform: scaleX(1); }
 
 /* Pie de página */
 .pie-sitio{
 	margin-top:2rem;
 	padding:1rem;
 	width:100%;
-	border-radius:var(--radius);
+	border-radius:var(--radio);
 	background:linear-gradient(180deg, rgba(11,38,69,0.02), transparent);
 }
-.interior-pie{display:flex;justify-content:space-between;gap:1rem;align-items:center}
-.interior-pie a{color:var(--primary); text-decoration:none}
+.interior-pie{ display:flex; justify-content:space-between; gap:1rem; align-items:center; }
+.interior-pie a{ color:var(--primario); text-decoration:none; }
 
 /* =========================
-   Animación de entrada
-   - Elementos ocultos por defecto (opacidad + translateY + slight scale)
-   - Al añadir .is-ready al <body> se activa la transición
-   - prefer-reduced-motion desactiva animaciones
+   Animación de entrada (fade+slide con stagger)
+   - elementos ocultos por defecto
+   - al añadir .is-ready en <body> se activan transiciones
+   - prefer-reduced-motion respetado
    ========================= */
-
-/* estado inicial: oculto y preparado para animar */
 .encabezado-sitio,
 .introduccion,
 .rejilla .tarjeta {
 	opacity: 0;
 	transform: translateY(12px) scale(0.995);
 	transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
-	will-change: opacity, transform;
 }
-
-/* estado final: visible (se activa añadiendo .is-ready al <body>) */
 .is-ready .encabezado-sitio,
 .is-ready .introduccion,
 .is-ready .rejilla .tarjeta {
 	opacity: 1;
 	transform: none;
 }
-
-/* pequeño escalonado por defecto para las tarjetas (fallback).
-   El JS sobrescribirá transition-delay en cada tarjeta para un stagger más controlado. */
+/* fallback stagger (JS aplicará delays inline más precisos) */
 .is-ready .rejilla .tarjeta:nth-child(1){ transition-delay: 80ms; }
 .is-ready .rejilla .tarjeta:nth-child(2){ transition-delay: 160ms; }
 .is-ready .rejilla .tarjeta:nth-child(3){ transition-delay: 240ms; }
 .is-ready .rejilla .tarjeta:nth-child(4){ transition-delay: 320ms; }
-.is-ready .rejilla .tarjeta:nth-child(5){ transition-delay: 400ms; }
 
-/* Reducir movimiento si el usuario lo solicita en el sistema */
+/* Micro-interacciones: pulses y animaciones leves */
+@keyframes pulseGlow { 0%{ box-shadow:0 8px 18px rgba(11,110,253,0.06)} 50%{ box-shadow:0 18px 36px var(--glow)} 100%{ box-shadow:0 8px 18px rgba(11,110,253,0.06)} }
+.tarjeta:hover{ animation: pulseGlow 900ms ease-in-out 1; }
+
+/* Accesibilidad: si se prefiere reducir movimiento, desactivar animaciones */
 @media (prefers-reduced-motion: reduce){
 	.encabezado-sitio,
 	.introduccion,
-	.rejilla .tarjeta {
+	.rejilla .tarjeta,
+	.tarjeta:hover,
+	.boton-control,
+	.enlaces a::after {
 		transition: none !important;
+		animation: none !important;
 		transform: none !important;
 		opacity: 1 !important;
 	}
 }
 
-/* Animaciones y micro-interacciones
-   - pulseGlow: pulso sutil para el glow de las tarjetas al hacer hover
-   - float: movimiento vertical leve para dar vida
-   - underline: subrayado animado para enlaces
-   - boton-press: micro feedback para botones
-   --------------------------- */
-
-/* keyframes */
-@keyframes pulseGlow {
-	0% { box-shadow: 0 8px 18px rgba(11,110,253,0.06); transform: translateY(0) scale(1); }
-	50% { box-shadow: 0 18px 36px var(--glow); transform: translateY(-3px) scale(1.01); }
-	100% { box-shadow: 0 8px 18px rgba(11,110,253,0.06); transform: translateY(0) scale(1); }
-}
-
-@keyframes float {
-	0% { transform: translateY(0); }
-	50% { transform: translateY(-6px); }
-	100% { transform: translateY(0); }
-}
-
-@keyframes underline {
-	from { transform: scaleX(0); transform-origin: left; }
-	to { transform: scaleX(1); transform-origin: left; }
-}
-
-@keyframes boton-press {
-	0% { transform: translateY(0) scale(1); }
-	50% { transform: translateY(1px) scale(0.995); }
-	100% { transform: translateY(0) scale(1); }
-}
-
-/* Aplicar pulso glow sólo al hacer hover / focus (no permanente) */
-.tarjeta {
-	/* ...existing code... */
-	/* preparar para GPU */
-	will-change: transform, box-shadow, opacity;
-}
-.tarjeta:hover,
-.tarjeta:focus-within {
-	/* activa pulso como animación corta (once) y sombra más pronunciada */
-	animation: pulseGlow 900ms ease-in-out 1;
-	border-color: rgba(11,110,253,0.16);
-}
-
-/* levísimo movimiento continuo en tarjetas destacadas (opcional) */
-.tarjeta[data-topic="javascript"]:not(:hover) {
-	animation: float 6000ms ease-in-out infinite;
-	animation-delay: 600ms;
-	animation-play-state: paused; /* pausa por defecto, JS/CSS puede activarlo si se desea */
-}
-.tarjeta:hover[data-topic="javascript"]{ animation-play-state: running; }
-
-/* enlaces con subrayado animado */
-.enlaces a {
-	position: relative;
-	display:inline-block;
-	padding-bottom:2px;
-}
-.enlaces a::after {
-	content: '';
-	position: absolute;
-	left:0;
-	bottom:0;
-	height:2px;
-	width:100%;
-	background:var(--accent);
-	transform: scaleX(0);
-	transform-origin: left;
-	transition: transform 240ms ease-out;
-}
-.enlaces a:hover::after,
-.enlaces a:focus::after {
-	transform: scaleX(1);
-}
-
-/* micro-feedback para botones */
-.boton-control {
-	position: relative;
-	overflow: hidden;
-}
-.boton-control:active {
-	animation: boton-press 180ms linear 1;
-}
-
-/* mejorar focus-visible para accesibilidad */
-.boton-control:focus-visible,
-.enlaces a:focus-visible {
-	outline: 3px solid rgba(11,110,253,0.12);
-	outline-offset: 3px;
-}
-
-/* prefers-reduced-motion: desactivar animaciones y transiciones que no sean estrictamente necesarias */
-@media (prefers-reduced-motion: reduce) {
-	.tarjeta,
-	.tarjeta:hover,
-	.tarjeta:focus-within,
-	.tarjeta[data-topic="javascript"],
-	.boton-control,
-	.enlaces a::after,
-	.is-ready .rejilla .tarjeta { 
-		animation: none !important;
-		transition: none !important;
-		transform: none !important;
-		box-shadow: none !important;
-	}
-}
-
-/* Responsive: comportamientos del encabezado y controles */
+/* Responsive: encabezado y controles */
 @media (max-width:680px){
-	.interior-encabezado{flex-direction:column;align-items:flex-start}
-	.interior-pie{flex-direction:column;align-items:flex-start;gap:0.5rem}
-	.controles-sitio{
-		flex-basis:100%;
-		justify-content:space-between;
-		margin-top:0.5rem;
-	}
+	.interior-encabezado{ flex-direction:column; align-items:flex-start; }
+	.controles-sitio{ flex-basis:100%; justify-content:space-between; margin-top:0.5rem; width:100%; }
 }
-
 @media (max-width:420px){
-	.controles-sitio{flex-direction:column;align-items:stretch}
-	.boton-control{width:100%;text-align:center}
+	.controles-sitio{ flex-direction:column; align-items:stretch; }
+	.boton-control{ width:100%; text-align:center; }
 }

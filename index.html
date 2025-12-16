@@ -8,24 +8,34 @@
 </head>
 <body>
 	<header class="encabezado-sitio" role="banner">
-		<div class="contenedor interior-encabezado">
-			<div class="marca">
-				<h1 class="titulo-sitio"><code data-i18n="header.name">&lt;Elvin /&gt;</code></h1>
-				<p class="subtitulo-sitio" data-i18n="header.course">Lenguajes de marcas — M09</p>
-				<p class="meta-sitio" data-i18n="header.instructor">DAM01 — Profesora: Alicia Vázquez</p>
-			</div>
+		<!-- caja interior redondeada centrada (nuevo) -->
+		<div class="encabezado-caja">
+			<div class="contenedor interior-encabezado">
+				<div class="marca">
+					<div class="marca-content">
+						<h1 class="titulo-sitio"><code data-i18n="header.name">&lt;Elvin /&gt;</code></h1>
+						<p class="subtitulo-sitio" data-i18n="header.course">Lenguajes de marcas — M09</p>
+						<p class="meta-sitio" data-i18n="header.instructor">DAM01 — Profesora: Alicia Vázquez</p>
+					</div>
+				</div>
 
-			<nav class="controles-sitio" aria-label="Controles de la página">
-				<button id="themeToggle" class="boton-control" aria-pressed="false" title="Cambiar tema" data-i18n="controls.theme">Tema</button>
-				<button id="langToggle" class="boton-control" aria-pressed="false" title="Cambiar idioma">ES</button>
-			</nav>
+				<nav class="controles-sitio" aria-label="Controles de la página">
+					<div class="controles-inner" role="group" aria-label="Tema e idioma">
+						<button id="themeToggle" class="boton-control" aria-pressed="false" title="Cambiar tema" data-i18n="controls.theme">Tema</button>
+						<button id="langToggle" class="boton-control" aria-pressed="false" title="Cambiar idioma">ES</button>
+					</div>
+				</nav>
+			</div>
 		</div>
+
+		<!-- elemento decorativo sutil (cubre todo el ancho) -->
+		<div class="encabezado-fondo" aria-hidden="true"></div>
 	</header>
 
 	<main class="contenedor" role="main">
 		<section class="introduccion" aria-labelledby="intro-title">
 			<h2 id="intro-title" data-i18n="intro.title">Organizador de prácticas</h2>
-			<p data-i18n="intro.description">Plantilla para organizar por temas todos los trabajos realizados en la asignatura. Usa las tarjetas para añadir ejercicios, ejemplos y enlaces a repositorios.</p>
+			<p data-i18n="intro.description">Plantilla para organizar por temas todos los trabajos realizados en la asignatura. Usa las tarjetas para añadir ejercicios, ejemplos y enlaces a los recursos.</p>
 		</section>
 
 		<section class="modulos" aria-labelledby="modules-title">
@@ -46,8 +56,8 @@
 				<article class="tarjeta" role="listitem" data-topic="html">
 					<span class="distintivo" data-i18n="module.html.badge">M04</span>
 					<h3 class="titulo-tarjeta" data-i18n="module.html.title">HTML / Lenguaje de marcas</h3>
-					<p class="subtitulo-tarjeta" data-i18n="module.html.sub">Estructura semántica y accesibilidad</p>
-					<p data-i18n="module.html.desc">Trabajos sobre semántica, accesibilidad, DTD y validación de documentos.</p>
+					<p class="subtitulo-tarjeta" data-i18n="module.html.sub">Semántica y accesibilidad</p>
+					<p data-i18n="module.html.desc">Trabajos sobre semántica, validación y DTD.</p>
 					<ul class="enlaces">
 						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
 						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>
@@ -57,8 +67,8 @@
 				<article class="tarjeta" role="listitem" data-topic="css">
 					<span class="distintivo" data-i18n="module.css.badge">M09</span>
 					<h3 class="titulo-tarjeta" data-i18n="module.css.title">CSS Moderno</h3>
-					<p class="subtitulo-tarjeta" data-i18n="module.css.sub">Layouts, variables y animaciones</p>
-					<p data-i18n="module.css.desc">Plantillas, metodología BEM-like, variables y diseños responsivos para proyectos.</p>
+					<p class="subtitulo-tarjeta" data-i18n="module.css.sub">Layouts y variables</p>
+					<p data-i18n="module.css.desc">Plantillas, variables y animaciones responsivas.</p>
 					<ul class="enlaces">
 						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
 						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>
@@ -69,7 +79,7 @@
 					<span class="distintivo" data-i18n="module.data.badge">M09</span>
 					<h3 class="titulo-tarjeta" data-i18n="module.data.title">JSON / DTD</h3>
 					<p class="subtitulo-tarjeta" data-i18n="module.data.sub">Intercambio de datos y definiciones</p>
-					<p data-i18n="module.data.desc">Ejemplos de JSON para APIS, validación y pequeños ejercicios con DTD/XML.</p>
+					<p data-i18n="module.data.desc">Ejemplos de JSON para APIs y ejercicios con DTD/XML.</p>
 					<ul class="enlaces">
 						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
 						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>

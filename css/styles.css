@@ -1,255 +1,222 @@
-/* Variables y paleta (comentarios en español) */
-:root{
-	--bg: #ffffff;
-	--surface: #ffffff;
-	--page-padding: 2rem;
-	--texto: #0b2545;            /* azul oscuro para texto */
-	--muted: #5b6b86;
-	--primario: #0b6efd;         /* azul primario */
-	--acento: #ff7a18;          /* naranja para resaltar */
-	--fondo-tarjeta: #f8fbff;
-	--radio: 12px;
-	--gap: 1.25rem;
-	--trans: 180ms ease-out;
-	--sombra: 0 6px 18px rgba(11,38,69,0.08);
+/* Importación de tipografía */
+@import url('https://fonts.googleapis.com/css2?family=inter:wght@300;400;600;700&display=swap');
 
-	--fuente-encabezado: "Fira Code", "Roboto Mono", ui-monospace, SFMono-Regular, monospace;
-	--fuente-cuerpo: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-
-	--glow: rgba(11,110,253,0.14);
-	color-scheme: light;
+:root {
+    /* Paleta de colores */
+    --bg-dark: #0a0a0a;
+    --text-white: #ffffff;
+    --text-gray: #a1a1a6;
+    --accent-teal: #64d2ff;
+    --accent-purple: #bf5af2;
+    --accent-blue: #0a84ff;
+    
+    /* Variables para el efecto cristal (Glassmorphism) */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(20px);
+    --card-radius: 24px;
 }
 
-/* Modo oscuro */
-:root[data-theme="dark"]{
-	--bg: #0b1220;
-	--surface: #0f1724;
-	--texto: #e6eef6;
-	--muted: #98a0b3;
-	--primario: #61dafb;
-	--acento: #ffb86b;
-	--fondo-tarjeta: rgba(255,255,255,0.02);
-	--sombra: 0 10px 30px rgba(2,6,23,0.6);
-	color-scheme: dark;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
-/* Reset básico */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-	margin:0;
-	min-height:100%;
-	background:linear-gradient(180deg,var(--bg),var(--bg));
-	font-family:var(--fuente-cuerpo);
-	color:var(--texto);
-	padding:var(--page-padding);
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	-webkit-font-smoothing:antialiased;
-	-moz-osx-font-smoothing:grayscale;
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Efecto de luces de fondo */
+    background-image: 
+        radial-gradient(circle at 20% 90%, rgba(191, 90, 242, 0.2) 0%, rgba(0,0,0,0) 50%),
+        radial-gradient(circle at 80% 80%, rgba(10, 132, 255, 0.15) 0%, rgba(0,0,0,0) 50%),
+        radial-gradient(circle at 50% 0%, rgba(191, 90, 242, 0.1) 0%, rgba(0,0,0,0) 40%);
+    background-attachment: fixed;
 }
 
-/* Contenedor central reutilizable */
-.contenedor{ width:min(1100px,100%); }
-
-/* Encabezado full-bleed con caja interior redondeada */
-.encabezado-sitio{
-	/* ocupa todo el ancho del viewport */
-	width:100%;
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
-	padding: 1.25rem 0; /* padding vertical para respirar */
-	position:relative;
-	background: transparent; /* fondo lo gestiona la caja interior y la capa decorativa */
+/* --- Contenedor Principal --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-/* caja interior centrada y redondeada (visible) */
-.encabezado-caja{
-	max-width:1100px;
-	margin:0 auto;
-	padding:1rem 1.25rem;
-	border-radius:16px; /* bordes redondeados solicitados */
-	background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-	backdrop-filter: blur(8px) saturate(120%); /* efecto cristal */
-	border: 1px solid rgba(255,255,255,0.04);
-	box-shadow: 0 14px 40px rgba(2,6,23,0.12);
-	position:relative;
-	z-index:2; /* por encima del fondo decorativo */
+/* --- Header / Hero --- */
+.hero-header {
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+    text-align: left;
 }
 
-/* la capa decorativa sigue ocupando todo el header pero queda detrás */
-.encabezado-fondo{
-	position:absolute;
-	inset:0;
-	z-index:0;
-	pointer-events:none;
-	/* degradados y puntos de color suaves */
-	background-image:
-		radial-gradient(circle at 8% 25%, rgba(97,218,251,0.10), transparent 6%),
-		radial-gradient(circle at 88% 75%, rgba(255,121,198,0.06), transparent 10%),
-		linear-gradient(180deg, rgba(11,110,253,0.02), transparent 50%);
-	opacity:0.9;
-	filter: blur(8px) saturate(110%);
-	border-radius: 18px; /* matchea el radio visualmente aunque el elemento ocupa todo el ancho */
-	/* para que la decoración no sobresalga visualmente en móviles */
+.hero-header h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(to right, #fff, #c0c0c0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
 }
 
-/* interior-encabezado permanece igual pero garantizo stacking */
-.interior-encabezado{ position:relative; z-index:3; }
-
-/* pequeño ajuste visual para contenedores en móvil */
-@media (max-width:680px){
-	.encabezado-caja{ padding:0.85rem 0.9rem; border-radius:12px; }
-	.encabezado-sitio{ padding:0.9rem 0; }
-	.marca .marca-content{ gap:0.08rem; }
+.hero-header p.subtitle {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    max-width: 800px;
+    line-height: 1.6;
 }
 
-/* Marca y textos */
-.marca .titulo-sitio code{
-	font-family:var(--fuente-encabezado);
-	font-size:1.25rem;
-	color:var(--primario);
-	background:transparent;
-	padding:0.15rem 0.45rem;
-	border-radius:6px;
-}
-.subtitulo-sitio{margin:0;color:var(--muted);font-weight:600}
-.meta-sitio{margin:0;color:var(--muted);font-size:0.9rem}
-
-/* Controles: ocupan el espacio restante y se adaptan */
-.controles-sitio{
-	display:flex;
-	flex:1 1 0;
-	justify-content:flex-end;
-	gap:0.5rem;
-	align-items:center;
-}
-.boton-control{
-	background:transparent;
-	border:1px solid rgba(11,38,69,0.06);
-	padding:0.45rem 0.6rem;
-	border-radius:8px;
-	cursor:pointer;
-	font-weight:600;
-	color:var(--texto);
-	transition:all var(--trans);
-	min-width:64px;
-}
-.boton-control:hover{ transform:translateY(-2px); box-shadow:0 6px 18px rgba(11,38,69,0.06); }
-
-/* Introducción */
-.introduccion{ margin-bottom:1rem; }
-.introduccion p{ color:var(--muted); }
-
-/* Rejilla / Tarjetas */
-.rejilla{
-	display:grid;
-	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-	gap:1rem;
-	perspective: 1100px; /* permite efecto 3D en las tarjetas */
-}
-.tarjeta{
-	background:var(--fondo-tarjeta);
-	border-radius:10px;
-	padding:1rem;
-	border:1px solid rgba(11,38,69,0.04);
-	transition: transform 260ms cubic-bezier(.2,.9,.2,1), box-shadow 260ms linear, border-color 260ms linear;
-	transform-style: preserve-3d; /* mantener hijos en 3D */
-	backface-visibility: hidden;
-	will-change: transform, box-shadow, opacity;
-}
-.tarjeta:hover,
-.tarjeta:focus-within{
-	border-color: rgba(11,110,253,0.16);
-	box-shadow: 0 18px 42px rgba(11,110,253,0.10);
-	transform: translateY(-12px) rotateX(-6deg) rotateY(6deg);
-}
-.distintivo{
-	display:inline-block;
-	background:var(--primario);
-	color:white;
-	font-weight:700;
-	padding:0.2rem 0.5rem;
-	border-radius:999px;
-	font-size:0.75rem;
-	transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 220ms;
-	transform: translateZ(0);
-	transform-origin: center;
-	will-change: transform;
-}
-.titulo-tarjeta{ font-family:var(--fuente-encabezado); color:var(--texto); margin:0.5rem 0 0.25rem 0; }
-.subtitulo-tarjeta{ margin:0; color:var(--muted); font-weight:600; }
-.tarjeta p{ color:var(--muted); margin-top:0.5rem; }
-
-/* Lista de enlaces dentro de la tarjeta */
-.enlaces{ margin-top:0.75rem; padding-left:1rem; }
-.enlaces li{ margin-bottom:0.35rem; }
-.enlaces a{ color:var(--primario); text-decoration:none; font-weight:600; position:relative; display:inline-block; padding-bottom:2px; }
-.enlaces a::after{ content:''; position:absolute; left:0; bottom:0; height:2px; width:100%; background:var(--acento); transform: scaleX(0); transform-origin:left; transition: transform 240ms ease-out; }
-.enlaces a:hover::after, .enlaces a:focus::after{ transform: scaleX(1); }
-
-/* Pie de página */
-.pie-sitio{
-	margin-top:2rem;
-	padding:1rem;
-	width:100%;
-	border-radius:var(--radio);
-	background:linear-gradient(180deg, rgba(11,38,69,0.02), transparent);
-}
-.interior-pie{ display:flex; justify-content:space-between; gap:1rem; align-items:center; }
-.interior-pie a{ color:var(--primario); text-decoration:none; }
-
-/* =========================
-   Animación de entrada (fade+slide con stagger)
-   - elementos ocultos por defecto
-   - al añadir .is-ready en <body> se activan transiciones
-   - prefer-reduced-motion respetado
-   ========================= */
-.encabezado-sitio,
-.introduccion,
-.rejilla .tarjeta {
-	opacity: 0;
-	transform: translateY(12px) scale(0.995);
-	transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
-}
-.is-ready .encabezado-sitio,
-.is-ready .introduccion,
-.is-ready .rejilla .tarjeta {
-	opacity: 1;
-	transform: none;
-}
-/* fallback stagger (JS aplicará delays inline más precisos) */
-.is-ready .rejilla .tarjeta:nth-child(1){ transition-delay: 80ms; }
-.is-ready .rejilla .tarjeta:nth-child(2){ transition-delay: 160ms; }
-.is-ready .rejilla .tarjeta:nth-child(3){ transition-delay: 240ms; }
-.is-ready .rejilla .tarjeta:nth-child(4){ transition-delay: 320ms; }
-
-/* Micro-interacciones: pulses y animaciones leves */
-@keyframes pulseGlow { 0%{ box-shadow:0 8px 18px rgba(11,110,253,0.06)} 50%{ box-shadow:0 18px 36px var(--glow)} 100%{ box-shadow:0 8px 18px rgba(11,110,253,0.06)} }
-.tarjeta:hover{ animation: pulseGlow 900ms ease-in-out 1; }
-
-/* Accesibilidad: si se prefiere reducir movimiento, desactivar animaciones */
-@media (prefers-reduced-motion: reduce){
-	.encabezado-sitio,
-	.introduccion,
-	.rejilla .tarjeta,
-	.tarjeta:hover,
-	.boton-control,
-	.enlaces a::after {
-		transition: none !important;
-		animation: none !important;
-		transform: none !important;
-		opacity: 1 !important;
-	}
+/* --- Grid Layout --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 5rem;
 }
 
-/* Responsive: encabezado y controles */
-@media (max-width:680px){
-	.interior-encabezado{ flex-direction:column; align-items:flex-start; }
-	.controles-sitio{ flex-basis:100%; justify-content:space-between; margin-top:0.5rem; width:100%; }
+/* --- Estilo de la Tarjeta --- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: var(--card-radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
-@media (max-width:420px){
-	.controles-sitio{ flex-direction:column; align-items:stretch; }
-	.boton-control{ width:100%; text-align:center; }
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-image-container {
+    width: 100%;
+    height: 180px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background-color: rgba(255,255,255,0.02);
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+/* Tags */
+.card-tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-tag.m04 { color: var(--accent-teal); border-color: rgba(100, 210, 255, 0.3); }
+.card-tag.m09 { color: var(--accent-purple); border-color: rgba(191, 90, 242, 0.3); }
+
+/* Contenido */
+.card-content {
+    flex-grow: 1;
+}
+
+.card-content h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-content h3.card-subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+}
+
+.card-content p.description {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* Enlaces */
+.links-list {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.links-list li {
+    margin-bottom: 0.8rem;
+}
+
+.links-list li a {
+    color: var(--text-white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.links-list li a::before {
+    content: '→';
+    margin-right: 8px;
+    color: var(--accent-teal);
+}
+
+.links-list li a:hover {
+    color: var(--accent-teal);
+}
+
+/* Pie de tarjeta */
+.card-footer-links {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-glass-link {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.btn-glass-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--accent-teal);
+}
+
+/* Footer principal */
+.main-footer {
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: auto;
+    color: var(--text-gray);
+    border-top: var(--glass-border);
+    background: rgba(10, 10, 10, 0.5);
+}
+
+.main-footer a {
+    color: var(--accent-teal);
+    text-decoration: none;
 }

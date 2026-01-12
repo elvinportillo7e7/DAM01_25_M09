@@ -1,101 +1,120 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<title data-i18n="meta.title">Portafolio de Estudios</title>
-	<link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script - M04/M09 ITB</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-	<header class="encabezado-sitio" role="banner">
-		<!-- caja interior redondeada centrada (nuevo) -->
-		<div class="encabezado-caja">
-			<div class="contenedor interior-encabezado">
-				<div class="marca">
-					<div class="marca-content">
-						<h1 class="titulo-sitio"><code data-i18n="header.name">&lt;Elvin /&gt;</code></h1>
-						<p class="subtitulo-sitio" data-i18n="header.course">Lenguajes de marcas — M09</p>
-						<p class="meta-sitio" data-i18n="header.instructor">DAM01 — Profesora: Alicia Vázquez</p>
-					</div>
-				</div>
 
-				<nav class="controles-sitio" aria-label="Controles de la página">
-					<div class="controles-inner" role="group" aria-label="Tema e idioma">
-						<button id="themeToggle" class="boton-control" aria-pressed="false" title="Cambiar tema" data-i18n="controls.theme">Tema</button>
-						<button id="langToggle" class="boton-control" aria-pressed="false" title="Cambiar idioma">ES</button>
-					</div>
-				</nav>
-			</div>
-		</div>
+    <div class="container">
+        <header class="hero-header">
+            <h1>DAM1 - Llenguatje de Marcas</h1>
+            <p class="subtitle">Elvin Portillo Portafolio</p>
+        </header>
 
-		<!-- elemento decorativo sutil (cubre todo el ancho) -->
-		<div class="encabezado-fondo" aria-hidden="true"></div>
-	</header>
+        <main class="cards-grid">
 
-	<main class="contenedor" role="main">
-		<section class="introduccion" aria-labelledby="intro-title">
-			<h2 id="intro-title" data-i18n="intro.title">Organizador de prácticas</h2>
-			<p data-i18n="intro.description">Plantilla para organizar por temas todos los trabajos realizados en la asignatura. Usa las tarjetas para añadir ejercicios, ejemplos y enlaces a los recursos.</p>
-		</section>
+            <article class="glass-card">
+                <div class="card-image-container">
+                    <img src="https://placehold.co/600x350/1abc9c/white?text=DOM+M04" alt="Tema DOM">
+                </div>
 
-		<section class="modulos" aria-labelledby="modules-title">
-			<h2 id="modules-title" data-i18n="modules.title">Módulos y temas</h2>
+                <div class="card-content">
+                    <span class="card-tag m04">M04 - Lenguaje de Marcas</span>
+                    
+                    <h2>El DOM</h2>
+                    <h3 class="card-subtitle">Selectores</h3>
 
-			<div class="rejilla" role="list">
-				<article class="tarjeta" role="listitem" data-topic="javascript">
-					<span class="distintivo" data-i18n="module.js.badge">M09</span>
-					<h3 class="titulo-tarjeta" data-i18n="module.js.title">JavaScript</h3>
-					<p class="subtitulo-tarjeta" data-i18n="module.js.sub">Interactividad y DOM</p>
-					<p data-i18n="module.js.desc">Ejercicios que incluyen manipulación del DOM, fetch/async, módulos ES y prácticas de M09.</p>
-					<ul class="enlaces">
-						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
-						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>
-					</ul>
-				</article>
+                    <p class="description">
+                        Aprendiendo a seleccionar elementos del HTML usando getElementById y querySelector y manipular sus estilos y clases.
+                    </p>
 
-				<article class="tarjeta" role="listitem" data-topic="html">
-					<span class="distintivo" data-i18n="module.html.badge">M04</span>
-					<h3 class="titulo-tarjeta" data-i18n="module.html.title">HTML / Lenguaje de marcas</h3>
-					<p class="subtitulo-tarjeta" data-i18n="module.html.sub">Semántica y accesibilidad</p>
-					<p data-i18n="module.html.desc">Trabajos sobre semántica, validación y DTD.</p>
-					<ul class="enlaces">
-						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
-						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>
-					</ul>
-				</article>
+                    <div style="font-weight: bold; color: #64d2ff; margin-bottom: 5px;">Ejercicios y Ejemplos:</div>
+                    <ul class="links-list">
+                        
+                        <li><a href="Ejercicios/dom/ej1.html" target="_blank">Ejercicio 1: Hacker</a></li>
+                        <li><a href="#" target="_blank">Ejercicios exámenes anteriores</a></li>
+                        <li><a href="M04_DOM/eje2_teclado.html" target="_blank">Teclado alfanúmerico</a></li>
+                    </ul>
+                </div>
 
-				<article class="tarjeta" role="listitem" data-topic="css">
-					<span class="distintivo" data-i18n="module.css.badge">M09</span>
-					<h3 class="titulo-tarjeta" data-i18n="module.css.title">CSS Moderno</h3>
-					<p class="subtitulo-tarjeta" data-i18n="module.css.sub">Layouts y variables</p>
-					<p data-i18n="module.css.desc">Plantillas, variables y animaciones responsivas.</p>
-					<ul class="enlaces">
-						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
-						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>
-					</ul>
-				</article>
+                <div class="card-footer-links">
+                    <a href="M04_DOM/Document Object Model.pdf" class="btn-glass-link">📄 Apuntes</a>
+                    <a href="#" class="btn-glass-link">GitHub ➡</a>
+                </div>
+            </article>
 
-				<article class="tarjeta" role="listitem" data-topic="data">
-					<span class="distintivo" data-i18n="module.data.badge">M09</span>
-					<h3 class="titulo-tarjeta" data-i18n="module.data.title">JSON / DTD</h3>
-					<p class="subtitulo-tarjeta" data-i18n="module.data.sub">Intercambio de datos y definiciones</p>
-					<p data-i18n="module.data.desc">Ejemplos de JSON para APIs y ejercicios con DTD/XML.</p>
-					<ul class="enlaces">
-						<li><a href="#" data-i18n="module.link.notes">Apuntes</a></li>
-						<li><a href="#" data-i18n="module.link.git">Deberes</a></li>
-					</ul>
-				</article>
-			</div>
-		</section>
-	</main>
+            <article class="glass-card">
+                 <div class="card-image-container">
+                    <img src="https://placehold.co/600x350/2c3e50/white?text=JS+Fundamentos" alt="Tema JS">
+                </div>
 
-	<footer class="pie-sitio" role="contentinfo">
-		<div class="contenedor interior-pie">
-			<p class="autor" data-i18n="footer.author">Código realizado por Elvin</p>
-			<p class="contacto">✉️ <a href="mailto:elvin.portillo.7e7@itb.cat">elvin.portillo.7e7@itb.cat</a> · CC: <span data-i18n="footer.cc">Profesor/a</span></p>
-		</div>
-	</footer>
+                <div class="card-content">
+                    <span class="card-tag m09">M09 - Diseño de Interfaces</span>
+                    
+                    <h2>Fundamentos y sintaxis</h2>
+                    <h3 class="card-subtitle">Variables, operadores y estructuras</h3>
 
-	<script type="module" src="js/script.js"></script>
+                    <p class="description">
+                        Introducción a la declaración de variables (let, const), tipos de datos primitivos, operadores básicos. Estructuras de control y ventanas emergentes.
+                    </p>
+
+                    <div style="font-weight: bold; color: #bf5af2; margin-bottom: 5px;">Índice y Prácticas:</div>
+                    <ul class="links-list">
+                        <li><p >Introducción / Incluir JS en HTML</p></li>
+                        <li><p >Variables / Operadores / Tipos</p></li>
+                    
+                        <li><a href="Ejercicios/jsfundamental/numbers.html" target="_blank">Ejercicio Numbers</a></li>
+                    </ul>
+                </div>
+
+                <div class="card-footer-links">
+                    <a href="M09_01_JS/01_Fundamentos y Sintaxis Moderna.pdf" class="btn-glass-link">📄 Apuntes</a>
+                    <a href="#" class="btn-glass-link">GitHub ➡</a>
+                </div>
+            </article>
+
+            <article class="glass-card">
+                 <div class="card-image-container">
+                    <img src="https://placehold.co/600x350/34495e/white?text=JS+Funciones" alt="Tema Funciones">
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag m09">M09 - Diseño de Interfaces</span>
+                    
+                    <h2>Funciones y Funcional</h2>
+                    <h3 class="card-subtitle">Arrow functions, Parámetros, Arrays</h3>
+
+                    <p class="description">
+                        Transición a Arrow Functions y gestión del contexto (this). Arrays y métodos funcionales (map, filter, reduce) para manipular datos. Uso de Destructuring.
+                    </p>
+
+                    <div style="font-weight: bold; color: #bf5af2; margin-bottom: 5px;">Temario y Prácticas:</div>
+                    <ul class="links-list">
+                        <li><a href="#">Funciones / Arrow Function</a></li>
+                        <li><a href="#">Arrays / Destructuring</a></li>
+                        <li><a href="#" target="_blank">Ejemplo 1</a></li>
+                        <li><a href="#" target="_blank">Ejercicio 1</a></li>
+                    </ul>
+                </div>
+
+                <div class="card-footer-links">
+                    <a href="#" class="btn-glass-link">📄 Apuntes</a>
+                    <a href="#" class="btn-glass-link">GitHub ➡</a>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>Contacto del programador: Elvin GPT | email@ejemplo.com</p>
+            <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">Datos originales de: Alicia Vázquez (ITB)</p>
+        </div>
+    </footer>
+
 </body>
 </html>

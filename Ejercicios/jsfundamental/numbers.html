@@ -66,7 +66,8 @@
     <div class="ejercicio">
         <h3>Ejercicio 5: Numeros tipo 153</h3>
         <p>
-            Buscar entre los primeros 10.000 numeros los que cumplen que la suma del cubo de sus cifras es igual al numero.
+            Buscar entre los primeros 10.000 numeros los que cumplen que la suma del cubo de sus cifras es igual al
+            numero.
         </p>
         <div class="resultado" id="res5"></div>
     </div>
@@ -89,7 +90,7 @@
         let numgran = numeroMasGrande(6, 4);
         console.log("El numero mas grande es : " + numgran);
         document.getElementById("res1").innerHTML = "El numero mayor es: " + numgran;
-    
+
         //funcion num2
         function multiplicacion(num1, num2) {
             let resultado = 0;
@@ -100,17 +101,17 @@
         }
 
         let multiplicaciondos = multiplicacion(3, 6);
-        console.log("El resultado de la multiplicacion es: "+ multiplicacion(3,6))
+        console.log("El resultado de la multiplicacion es: " + multiplicacion(3, 6))
         document.getElementById("res2").innerHTML = "3 x 6 = " + multiplicaciondos;
 
         // tercera funcion
         function multiplicacionTres(num1, num2, num3) {
-            let resultado = multiplicacion(multiplicacion(num1, num2),num3);
+            let resultado = multiplicacion(multiplicacion(num1, num2), num3);
             return resultado;
         }
 
         let multitres = multiplicacionTres(2, 3, 4);
-        console.log("El resultao de 2 * 3 * 4 es = "+multitres)
+        console.log("El resultao de 2 * 3 * 4 es = " + multitres)
         document.getElementById("res3").innerHTML = "2 * 3 * 4 = " + multitres;
 
         // 4rta funcion
@@ -120,9 +121,24 @@
         }
 
         let mediaFinal = notaMedia(7, 8, 6);
+        console.log("La media es = " + mediaFinal)
         document.getElementById("res4").innerHTML = "La nota media es: " + mediaFinal;
 
         // Quinta Funcion 
+
+
+        //sexta funcion 
+        function comprovacionEnter(num) {
+            let resultado = Math.pow(num, 3).toFixed(2);
+            if (Number.isInteger(resultado)) {
+                return "El número " + resultado + " es un entero";
+            } else {
+                return "El número " + resultado + " no es entero";
+            }
+        }
+        let esEntero = comprovacionEnter(8.4);
+        console.log(esEntero)
+        document.getElementById("res6").innerHTML = esEntero;
     </script>
 
 </body>

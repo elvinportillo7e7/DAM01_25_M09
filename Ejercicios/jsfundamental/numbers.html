@@ -123,48 +123,6 @@
         document.getElementById("res4").innerHTML = "La nota media es: " + mediaFinal;
 
         // Quinta Funcion 
-        function numerosEspeciales() {
-            let resultado = "";
-
-            for (let i = 1; i <= 10000; i++) {
-                let numero = i;
-                let suma = 0;
-
-                let texto = numero.toString();
-
-                for (let j = 0; j < texto.length; j++) {
-                    let cifra = parseInt(texto[j]);
-                    suma += cifra * cifra * cifra;
-                }
-
-                if (suma === numero) {
-                    resultado += numero + " ";
-                }
-            }
-            return resultado;
-        }
-
-        document.getElementById("res5").innerHTML =
-            "Numeros encontrados: " + numerosEspeciales();
-
-        // Sexta funcion
-        function cuboNumero(num) {
-            if (typeof num !== "number") {
-                alert("El valor no es un numero");
-                return false;
-            }
-
-            if (!Number.isInteger(num)) {
-                alert("El numero no es entero");
-                return false;
-            }
-
-            return num * num * num;
-        }
-
-        let cubo = cuboNumero(3);
-        document.getElementById("res6").innerHTML =
-            cubo !== false ? "El cubo de 3 es: " + cubo : "Error en el cálculo";
     </script>
 
 </body>

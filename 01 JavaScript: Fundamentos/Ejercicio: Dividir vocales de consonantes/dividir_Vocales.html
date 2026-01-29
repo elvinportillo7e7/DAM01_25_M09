@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Separar vocales y consonantes</title>
+</head>
+<body>
+    <h1>Separar vocales y consonantes</h1>
+    <p>Abre la consola para ver los resultados.</p>
+
+    <script>
+        // separarVocalesDeConsonantes: Devuelve un string con todas las vocales primero y luego las consonantes
+        const separarVocalesDeConsonantes = (texto) => {
+            let vocales = '';
+            let consonantes = '';
+            let textoMinuscula = texto.toLowerCase(); // para comparar sin problemas
+            for (let i = 0; i < texto.length; i++) {
+                let letra = texto[i];
+                if ('aeiou'.includes(textoMinuscula[i])) {
+                    vocales += letra;
+                } else {
+                    consonantes += letra;
+                }
+            }
+            let resultado = vocales + consonantes;
+            console.log('Texto original: ' + texto);
+            console.log('Texto con vocales primero: ' + resultado);
+            return resultado;
+        }
+
+        // --- LLAMADAS Y RESULTADOS ESPERADOS ---
+        separarVocalesDeConsonantes('murcielago'); // Esperado: "uieaomrlgc"
+        separarVocalesDeConsonantes('hola');       // Esperado: "oa hl"
+        separarVocalesDeConsonantes('xyz');        // Esperado: "xyz"
+        separarVocalesDeConsonantes('aeiou');      // Esperado: "aeiou"
+        separarVocalesDeConsonantes('');           // Esperado: ""
+    </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 // --- CONFIGURACIÓN ---
 const GITHUB_USERNAME = 'elvinportillo7e7'; // <--- TU USUARIO
 const REPO_NAME = 'DAM01_25_M09';           // <--- TU REPO
-const BRANCH = 'master';
+const BRANCH = 'main';
 
 // --- ESTADO ---
 let currentPath = '';
@@ -202,7 +202,15 @@ async function uploadToGithub(path, content, message) {
         },
         body: JSON.stringify({ message, content, branch: BRANCH })
     });
-    if (!res.ok) throw new Error('Fallo al subir/crear');
+    
+    // --- MEJORA DE DEBUG ---
+    if (!res.ok) {
+        const errorData = await res.json();
+        console.error("Error GitHub:", errorData); // Muestra el error en consola (F12)
+        throw new Error(`GitHub dice: ${errorData.message}`); // Te muestra el error real en la alerta
+    }
+    // ----------------------
+    
     return res.json();
 }
 
@@ -215,7 +223,11 @@ async function deleteFromGithub(path, sha) {
         },
         body: JSON.stringify({ message: `Borrar ${path}`, sha, branch: BRANCH })
     });
-    if (!res.ok) throw new Error('Fallo al borrar');
+
+    if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(`Error al borrar: ${errorData.message}`);
+    }
 }
 
 // --- FUNCIÓN CLAVE: LIMPIEZA DE NOMBRES ---

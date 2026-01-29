@@ -64,3 +64,18 @@ body {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0f172a; }
 ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+
+/* --- DRAG & DROP --- */
+
+/* Clase que se activa cuando arrastras algo sobre una carpeta */
+.drag-over {
+    border: 2px dashed #06b6d4 !important; /* Borde Cyan discontinuo */
+    background: rgba(6, 182, 212, 0.2) !important;
+    transform: scale(1.05);
+}
+
+/* El elemento que estás arrastrando */
+.dragging {
+    opacity: 0.5;
+    border: 2px solid #a855f7; /* Borde morado */
+}

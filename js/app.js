@@ -100,7 +100,8 @@ async function handleUpload() {
     reader.readAsDataURL(file);
     reader.onload = async function() {
         const base64Content = reader.result.split(',')[1];
-        const path = currentPath ? `${currentPath}/${file.name}` : file.name;
+        const safeFileName = sanitizeName(file.name);
+        const path = currentPath ? `${currentPath}/${safeFileName}` : safeFileName;
 
         // PUT a la API de GitHub para crear/actualizar archivo
         await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${path}`, {
@@ -123,12 +124,13 @@ async function handleUpload() {
 
 async function createFolder() {
     if (!token) return;
-    const name = prompt("Nombre de la carpeta:");
+    let name = prompt("Nombre de la carpeta:"); // Usamos let, no const
     if (!name) return;
 
-    // GitHub no permite carpetas vacías, creamos un .keep oculto dentro
+    // --- AÑADIR ESTO ---
+    name = sanitizeName(name); 
+    // -------------------
     const path = currentPath ? `${currentPath}/${name}/.keep` : `${name}/.keep`;
-    
     await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${path}`, {
         method: 'PUT',
         headers: {
@@ -239,4 +241,8 @@ function checkAuth() {
         document.getElementById('admin-controls').classList.remove('hidden');
         document.getElementById('login-btn').classList.add('hidden');
     }
+}
+function sanitizeName(name) {
+    // Reemplaza : / \ * ? " < > | por un guion
+    return name.replace(/[:\/\\*?"<>|]/g, '-');
 }

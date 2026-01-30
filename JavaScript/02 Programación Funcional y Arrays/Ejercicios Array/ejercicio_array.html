@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio JS - Abre la consola</title>
+</head>
+<body>
+
+    <h1>Abre la consola </h1>
+
+    <script>
+        const sumarPares = (lista) => {
+            let suma = 0;
+            for (let i = 0; i < lista.length; i++) {
+                if (lista[i] % 2 === 0) {
+                    suma = suma + lista[i];
+                }
+            }
+            return suma;
+        };
+
+        console.log("Resultado Problema 1:");
+        console.log(sumarPares([2, 4, 5, 6, 7, 8, 3, 1, 10, 4]));
+
+
+
+        function ordenDatos(datos) {
+            let nombre = datos.pop(); 
+            datos.unshift(nombre);
+            let sumaNotas = 0;
+            let contadorNotas = 0;
+
+            for (let i = 1; i < datos.length; i++) {
+                sumaNotas += Number(datos[i]);
+                contadorNotas++;
+            }
+            let media = sumaNotas / contadorNotas;
+            datos.push(media);
+            return datos.join(",");
+        }
+
+        console.log("\nResultado Problema 2:");
+        console.log(ordenDatos(["Rodriguez", "8", 9, '5', 4, 'Clara']));
+
+
+        const filterWords = (palabras) => {
+            let resultado = [];
+            
+            for (let i = 0; i < palabras.length; i++) {
+                let palabraActual = palabras[i];
+                if (palabraActual[0].toUpperCase() !== "Z") {
+                    resultado.push(palabraActual);
+                }
+            }
+            return resultado;
+        };
+
+        console.log("\nResultado Problema 3:");
+        console.log(filterWords(["Bob", "Alex", "Zoello"]));
+        console.log(filterWords(["León", "Zebra", "Gacela"]));
+        console.log(filterWords(["Mercedes", "Bmw", "Audi", "Porche"]));
+
+    </script>
+</body>
+</html>

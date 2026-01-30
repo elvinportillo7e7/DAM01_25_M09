@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cuadrado {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: black;
+            border: solid ;
+            
+        }
+        p {
+            margin: 5px 0;
+        }
+        button {
+            margin: 10px 5px 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Formulario de prueba</h1>
+    <form>
+        <p>Unico click</p>
+        <input type="text" id="texto_usuari" placeholder="Introduce Algo..." style="padding-right: 5%;">
+        <p>Doble click</p>
+        <input type="text" id="texto_usuari_dbclick" placeholder="Introduce Algo..." style="padding-right: 5%;">
+    </form>
+    <button id="enviar">Enviar unClick</button>
+    <button id="enviar_dbclick">Enviar dbClick</button>
+    <p>Preciona enter para la magia ver!!</p>
+    <span class="cuadrado" id="cubo"></span>
+
+    <script>
+        let mensaje = document.getElementById("texto_usuari");
+        let enviar = document.getElementById("enviar");
+        //PARA 1 SOLO CLICK
+        enviar.addEventListener("click", alerta);
+
+        let mensaje1 = document.getElementById("texto_usuari_dbclick");
+        let enviar1 = document.getElementById("enviar_dbclick");
+        //PARA 2 CLICKS
+        enviar1.addEventListener("dblclick", alertadb)
+
+        function alerta() {
+            alert(mensaje.value);
+        }
+        function alertadb() {
+            alert(mensaje1.value);
+        }
+
+        //Raton por encima
+        let area = document.getElementById("cubo")
+        area.addEventListener("mouseenter", alertaenc)
+        area.addEventListener("mouseleave", alertafuera)
+        area.addEventListener("mousemove",(event)=>{
+            let x = event.clientX
+            let y = event.clientY
+            let respuesta = `La posicion actual es : x =${x},  y = ${y}` 
+            console.log(respuesta)
+        })
+        function alertaenc() {
+            alert("Te has puesto encima del cuadrado")
+        }
+        function alertafuera() {
+            alert("Te has salido del cuadrado")
+        }
+
+        document.addEventListener("keydown", (event) =>{
+            if (event.key === "Enter") {
+                pressEnter()
+            }
+        })
+
+        function pressEnter(){
+            alert("Se presionó Enter")
+        }
+    </script>
+</body>
+</html>   

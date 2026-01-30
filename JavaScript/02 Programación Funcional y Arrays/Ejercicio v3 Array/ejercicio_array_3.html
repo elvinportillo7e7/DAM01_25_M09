@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio JS - Abre la consola</title>
+</head>
+
+<body>
+
+    <h1>Abre la consola </h1>
+
+    <script>
+        const notas = [3.4, 7.9, 8.0, 2.5, 5.6, 5.4, 9.0];
+
+
+        let suma = 0;
+        for (let i = 0; i < notas.length; i++) {
+            suma += notas[i];
+        }
+        const media = (suma / notas.length).toFixed(2);
+        const primeraMayorCinco = notas.find(nota => nota > 5);
+        const notasSobreVeinte = notas.map(nota => nota * 2);
+
+        console.log("--- Resultados de Notas ---");
+        console.log("La nota media es:", media);
+        console.log("La primera nota mayor a 5 es:", primeraMayorCinco);
+        console.log("Notas originales:", notas);
+        console.log("Notas transformadas (sobre 20):", notasSobreVeinte);
+    </script>
+</body>
+
+</html>

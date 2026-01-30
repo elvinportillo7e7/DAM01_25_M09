@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio JS - Abre la consola</title>
+</head>
+
+<body>
+
+    <h1>Abre la consola </h1>
+
+    <script>
+
+        const dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+
+        const primerDiaM = dias.find(dia => dia[0] === 'M');
+
+        const posicionV = dias.findIndex(dia => dia[0] === 'V');
+
+        const empiezaPorS = dias.some(dia => dia[0] === 'S');
+
+        const todosAcabanEnS = dias.every(dia => dia.endsWith('s'));
+
+        console.log("--- Nuevos Ejercicios ---");
+        console.log("Primer día con 'M':", primerDiaM);
+        console.log("Posición del día con 'V':", posicionV);
+        console.log("¿Hay algún día con 'S'?:", empiezaPorS);
+        console.log("¿Todos acaban en 's'?:", todosAcabanEnS);
+    </script>
+</body>
+
+</html>

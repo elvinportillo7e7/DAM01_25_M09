@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Ejercicio 2: Objetos</p>
+    <p id="resultado1"></p>
+    <script>
+
+        //Forma 1 de hacer un objeto
+        
+        //let tvSamsung = new Object();
+        //tvSamsung.nombre = "TV Samsung 42";
+        //tvSamsung.categoria = "Televisores";
+        //tvSamsung.unidades = 4;
+        //tvSamsung.precio = 345.95;
+
+        //Forma 2 de hacer un objeto
+        
+        const tvSamsung ={
+            nombre : "TV Samsung 42",
+            categoria: "Televisores" ,
+            unidades: 4,
+            precio: 345.95
+        }
+
+        tvSamsung.getImporte = function(){
+            return this.unidades * this.precio 
+        }
+        
+        console.log( tvSamsung.getImporte())
+
+
+
+        //Mostramos por pantalla el resultado 
+        let texto = document.getElementById("resultado1")
+        texto.textContent = `Valor total de les unitats: ${tvSamsung.getImporte()}`
+        
+
+        // Obtener el string  que correponde al json 
+        const jsonstring = JSON.stringify(tvSamsung)
+        console.log(jsonstring)
+
+
+    </script>
+</body>
+
+</html>
